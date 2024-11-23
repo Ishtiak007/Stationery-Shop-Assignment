@@ -54,6 +54,6 @@ const stationeryProductSchema = new Schema<IStationaryProduct>(
 
 // Create and export the Mongoose model for stationery products
 export const StationeryProductModel = model<IStationaryProduct>(
-  'StationeryProductModel', // Collection name in the database
+  'StationeryProductModelCollection', // Collection name in the database
   stationeryProductSchema,
 );
