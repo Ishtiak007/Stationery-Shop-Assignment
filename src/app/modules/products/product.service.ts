@@ -25,7 +25,7 @@ const getAllProductsFromDB = async (searchTerm?: string) => {
   return result;
 };
 // ...........................................................
-// Add functionality to fetch a single product by ID
+// Retrieve a single stationery product by its ID
 const getSingleProductFromDB = async (id: string) => {
   const result = await StationeryProductModel.findOne({ _id: id });
   return result;

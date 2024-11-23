@@ -56,8 +56,33 @@ const getAllStationeryProducts = async (req: Request, res: Response) => {
   }
 };
 // ......................................................................
+// Retrieve a single stationery product by its ID
+const getSingleProductFromDB = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
 
+    const result =
+      await stationeryProductServices.getSingleProductFromDB(productId);
+
+    res.status(200).json({
+      message: 'Products retrieved successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: 'Product retrieved failed!',
+      success: false,
+      errors: {
+        name: error.name,
+        errors: error.errors,
+      },
+      stack: error.stack,
+    });
+  }
+};
 export const ProductControllers = {
   createProduct,
   getAllStationeryProducts,
+  getSingleProductFromDB,
 };
