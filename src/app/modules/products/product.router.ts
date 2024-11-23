@@ -12,4 +12,7 @@ router.get('/', ProductControllers.getAllStationeryProducts);
 // get single product by its ID from database
 router.get('/:productId', ProductControllers.getSingleProductFromDB);
 
+// update a single product by its Id
+router.put('/:productId', ProductControllers.updateAnySingleProduct);
+
 export const StationeryProductRoutes = router;
