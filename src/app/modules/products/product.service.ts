@@ -30,9 +30,22 @@ const getSingleProductFromDB = async (id: string) => {
   const result = await StationeryProductModel.findOne({ _id: id });
   return result;
 };
-
+// ...........................................................
+// Update a single product based on its ID
+const updateAsingleProduct = async (
+  id: string,
+  updatedProduct: Partial<IStationaryProduct>,
+) => {
+  const result = await StationeryProductModel.findByIdAndUpdate(
+    { _id: id },
+    { $set: updatedProduct },
+    { new: true, runValidators: true },
+  );
+  return result;
+};
 export const stationeryProductServices = {
   createStationeryProductIntoDB,
   getAllProductsFromDB,
   getSingleProductFromDB,
+  updateAsingleProduct,
 };
