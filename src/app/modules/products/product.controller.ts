@@ -108,9 +108,43 @@ const updateAnySingleProduct = async (req: Request, res: Response) => {
     });
   }
 };
+
+//.............................................................
+// Delete a single product from the database by its ID
+const deleteAProductFromDB = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const result =
+      await stationeryProductServices.deleteAProductFromDB(productId);
+    if (result.deletedCount === 0) {
+      return res.status(404).json({
+        message: 'Product not found',
+        success: false,
+        data: {},
+      });
+    }
+    res.status(200).json({
+      message: 'Product deleted successfully',
+      success: true,
+      data: {},
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: 'Product deleted Failed!',
+      success: false,
+      errors: {
+        name: error.name,
+        errors: error.errors,
+      },
+      stack: error.stack,
+    });
+  }
+};
+
 export const ProductControllers = {
   createProduct,
   getAllStationeryProducts,
   getSingleProductFromDB,
   updateAnySingleProduct,
+  deleteAProductFromDB,
 };
