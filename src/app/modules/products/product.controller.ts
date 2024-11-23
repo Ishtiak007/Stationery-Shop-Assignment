@@ -55,6 +55,8 @@ const getAllStationeryProducts = async (req: Request, res: Response) => {
     });
   }
 };
+// ......................................................................
+
 export const ProductControllers = {
   createProduct,
   getAllStationeryProducts,

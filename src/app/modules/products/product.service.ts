@@ -1,13 +1,14 @@
 import { IStationaryProduct } from './product.interface';
 import { StationeryProductModel } from './product.model';
 
+// .........................................................
 // Implement functionality for creating a product
 const createStationeryProductIntoDB = async (product: IStationaryProduct) => {
   const result = await StationeryProductModel.create(product);
   return result;
 };
 
-// .........................................
+// ..........................................................
 // Implement search functionality for retrieving all products
 const getAllProductsFromDB = async (searchTerm?: string) => {
   const filter = searchTerm
@@ -23,9 +24,15 @@ const getAllProductsFromDB = async (searchTerm?: string) => {
   const result = await StationeryProductModel.find(filter);
   return result;
 };
+// ...........................................................
+// Add functionality to fetch a single product by ID
+const getSingleProductFromDB = async (id: string) => {
+  const result = await StationeryProductModel.findOne({ _id: id });
+  return result;
+};
 
-// Implement functionality to create and retrieve products from the database
 export const stationeryProductServices = {
   createStationeryProductIntoDB,
   getAllProductsFromDB,
+  getSingleProductFromDB,
 };
