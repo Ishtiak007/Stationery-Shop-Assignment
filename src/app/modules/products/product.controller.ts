@@ -81,8 +81,36 @@ const getSingleProductFromDB = async (req: Request, res: Response) => {
     });
   }
 };
+// ...........................................................
+// Update a single product based on its ID
+const updateAnySingleProduct = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const updatedProduct = req.body;
+    const result = await stationeryProductServices.updateAsingleProduct(
+      productId,
+      updatedProduct,
+    );
+    res.status(200).json({
+      message: 'Products updated successfully',
+      success: true,
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: 'Product updated failed!',
+      success: false,
+      errors: {
+        name: error.name,
+        errors: error.errors,
+      },
+      stack: error.stack,
+    });
+  }
+};
 export const ProductControllers = {
   createProduct,
   getAllStationeryProducts,
   getSingleProductFromDB,
+  updateAnySingleProduct,
 };
