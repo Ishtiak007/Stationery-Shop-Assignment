@@ -28,7 +28,7 @@ const stationeryProductSchema = new Schema<IStationaryProduct>(
         'Art Supplies',
         'Educational',
         'Technology',
-      ], //The type of product, using an enum
+      ], // enum type category
     },
     description: {
       type: String,
