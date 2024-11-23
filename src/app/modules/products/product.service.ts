@@ -7,7 +7,25 @@ const createStationeryProductIntoDB = async (product: IStationaryProduct) => {
   return result;
 };
 
+// .........................................
+// Implement search functionality for retrieving all products
+const getAllProductsFromDB = async (searchTerm?: string) => {
+  const filter = searchTerm
+    ? {
+        $or: [
+          { name: { $regex: searchTerm, $options: 'i' } },
+          { brand: { $regex: searchTerm, $options: 'i' } },
+          { category: { $regex: searchTerm, $options: 'i' } },
+        ],
+      }
+    : {};
+
+  const result = await StationeryProductModel.find(filter);
+  return result;
+};
+
 // Implement functionality to create and retrieve products from the database
 export const stationeryProductServices = {
   createStationeryProductIntoDB,
+  getAllProductsFromDB,
 };
