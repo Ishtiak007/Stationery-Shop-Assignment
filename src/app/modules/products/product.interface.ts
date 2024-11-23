@@ -7,7 +7,7 @@ export interface IStationaryProduct {
     | 'Office Supplies'
     | 'Art Supplies'
     | 'Educational'
-    | 'Technology';
+    | 'Technology'; //value (Writing, Office Supplies, Art Supplies, Educational, Technology)
   description: string;
   quantity: number;
   inStock: boolean;
