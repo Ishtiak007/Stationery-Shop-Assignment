@@ -15,4 +15,7 @@ router.get('/:productId', ProductControllers.getSingleProductFromDB); //Endpoint
 // update a single product by its Id
 router.put('/:productId', ProductControllers.updateAnySingleProduct); //Endpoint: /api/products/:productId
 
+// delete a product from database
+router.delete('/:productId', ProductControllers.deleteAProductFromDB); //Endpoint: /api/products/:productId
+
 export const StationeryProductRoutes = router;
