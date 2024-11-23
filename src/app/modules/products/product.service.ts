@@ -24,12 +24,14 @@ const getAllProductsFromDB = async (searchTerm?: string) => {
   const result = await StationeryProductModel.find(filter);
   return result;
 };
+
 // ...........................................................
 // Retrieve a single stationery product by its ID
 const getSingleProductFromDB = async (id: string) => {
   const result = await StationeryProductModel.findOne({ _id: id });
   return result;
 };
+
 // ...........................................................
 // Update a single product based on its ID
 const updateAsingleProduct = async (
@@ -43,9 +45,18 @@ const updateAsingleProduct = async (
   );
   return result;
 };
+
+// ............................................................
+// Delete a single product from the database by its ID
+const deleteAProductFromDB = async (id: string) => {
+  const result = await StationeryProductModel.deleteOne({ _id: id });
+  return result;
+};
+
 export const stationeryProductServices = {
   createStationeryProductIntoDB,
   getAllProductsFromDB,
   getSingleProductFromDB,
   updateAsingleProduct,
+  deleteAProductFromDB,
 };
