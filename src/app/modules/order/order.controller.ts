@@ -42,7 +42,7 @@ const fetchAllOrders = async (req: Request, res: Response) => {
   } catch (error: any) {
     res.status(500).json({
       success: false,
-      message: 'Orders find failed!',
+      message: 'Failed to fine the order data!',
       errors: {
         name: error.name,
         errors: error.errors,
@@ -64,7 +64,7 @@ const calculateTheRevenueController = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     res.status(400).json({
-      message: 'Revenue calculated failed',
+      message: 'Failed to calculate the revenue',
       success: false,
       errors: {
         name: error.name,
