@@ -14,8 +14,6 @@ npm install
 
 ### Start the Development Server
 
-- **Command**:
-
 ```bash
   npm run start:dev
 ```
