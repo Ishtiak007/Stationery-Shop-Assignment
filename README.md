@@ -4,7 +4,42 @@
 
 [Stationery Shop](https://assignment-2-theta-lyart.vercel.app/)
 
-## Folder Structure
+### Install Dependencies
+
+Run the following command to install all required packages listed in `package.json`:
+
+```bash
+npm install
+```
+
+### Start the Development Server
+
+- **Command**:
+
+```bash
+  npm run start:dev
+```
+
+**Description:**  
+Starts the server in development mode using `ts-node-dev`. This enables automatic server restarts upon file changes and avoids the need to compile TypeScript files manually. The server will execute the `./src/server.ts` file as the entry point.
+
+### Build the Project
+
+If you want to generate a production build, run:
+
+```bash
+npm run build
+```
+
+### Lint and Format Code
+
+To check for linting errors, run:
+
+```bash
+npm run lint
+```
+
+## Folder Structure (MVC Pattern)
 
 ```
 src/
