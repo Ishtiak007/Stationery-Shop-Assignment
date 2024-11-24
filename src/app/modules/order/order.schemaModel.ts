@@ -35,6 +35,6 @@ const OrderSchema: Schema = new Schema<IOrder>(
 );
 
 // Create and export the Order model based on the schema
-const OrderModel = model<IOrder>('Orders', OrderSchema);
+const OrderModel = model<IOrder>('OrdersCollection', OrderSchema);
 
 export default OrderModel;

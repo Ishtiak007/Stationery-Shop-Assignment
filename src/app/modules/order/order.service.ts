@@ -9,13 +9,17 @@ const createAnOrder = async (orderData: {
 }): Promise<any> => {
   const { email, product, quantity } = orderData;
   const productDoc = await StationeryProductModel.findById(product);
+
+  // Fetch the product document from the database using the product ID
   if (!productDoc) throw new Error('Product not found');
-  // Handle insufficient stock
+
+  // If the product does not exist, throw and errorHandle insufficient stock
   if (productDoc.quantity < quantity) {
     throw new Error('Insufficient stock for this product');
   }
-  //   calculate total price
+  //   Total Price
   const totalPrice = Math.round(productDoc.price * quantity);
+
   // create the order
   const newOrder = new OrderModel({
     email,
@@ -23,9 +27,8 @@ const createAnOrder = async (orderData: {
     quantity,
     totalPrice,
   });
-  //   Save order in DB
   await newOrder.save();
-  //   updated inventory
+  //   updated the database
   productDoc.quantity -= quantity;
   productDoc.inStock = productDoc.quantity > 0;
   await productDoc.save();
