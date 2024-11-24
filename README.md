@@ -26,11 +26,10 @@ src/
 └── server.ts
 ```
 
-## Short overview
-
 ## Mongoose Model
 
 ```
+typescript
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IUser extends Document {
@@ -51,6 +50,7 @@ export const User = mongoose.model<IUser>('User', userSchema);
 ## Zod Validation
 
 ```
+typescript
 import { z } from 'zod';
 
 export const createUserSchema = z.object({
@@ -73,6 +73,7 @@ export const updateUserSchema = z.object({
 ## Express Controller
 
 ```
+typescript
 import { Request, Response } from 'express';
 import { User } from '../models/user.model';
 
@@ -125,6 +126,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 ## Express Routes
 
 ```
+typescript
 import express from 'express';
 import { createUser, getUsers, updateUser, deleteUser } from '../controllers/user.controller';
 import { createUserSchema, updateUserSchema } from '../validations/user.validation';
@@ -143,6 +145,7 @@ export default router;
 ## Express App Setup
 
 ```
+typescript
 import express from 'express';
 import userRoutes from './routes/user.routes';
 
@@ -157,6 +160,7 @@ export default app;
 ## Server Setup
 
 ```
+typescript
 import mongoose from 'mongoose';
 import app from './app';
 
