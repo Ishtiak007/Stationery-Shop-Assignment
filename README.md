@@ -2,8 +2,7 @@
 
 ## Folder Structure
 
-## Folder Structure
-
+```
 src/
 ├── app/
 │ ├── config/
@@ -25,3 +24,4 @@ src/
 │ │ └── product.validationWithZod.ts
 ├── app.ts
 └── server.ts
+```
