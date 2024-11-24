@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { StationeryProductModel } from '../products/product.model';
 import OrderModel from './order.schemaModel';
-
+// ................................................................
 const createAnOrder = async (orderData: {
   email: string;
   product: string;
@@ -35,6 +35,14 @@ const createAnOrder = async (orderData: {
   return newOrder;
 };
 
+//..........................................................................
+// Get all orders data from database
+const getAllTheOrders = async () => {
+  const result = await OrderModel.find();
+  return result;
+};
+
 export const orderService = {
   createAnOrder,
+  getAllTheOrders,
 };

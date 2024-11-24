@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { orderService } from './order.service';
 import { orderZodValidation } from './order.validationWithZod';
 
+//..............................................................
 // Implement controller to handle the creation of new orders
 const createOrderController = async (req: Request, res: Response) => {
   try {
@@ -28,6 +29,30 @@ const createOrderController = async (req: Request, res: Response) => {
   }
 };
 
+//.............................................................
+// Develop a controller to retrieve all orders
+const fetchAllOrders = async (req: Request, res: Response) => {
+  try {
+    const result = await orderService.getAllTheOrders();
+    res.status(200).json({
+      success: true,
+      message: 'Successfully find all orders',
+      data: result,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: 'Orders find failed!',
+      errors: {
+        name: error.name,
+        errors: error.errors,
+      },
+      stack: error.stack,
+    });
+  }
+};
+
 export const orderController = {
   createOrderController,
+  fetchAllOrders,
 };

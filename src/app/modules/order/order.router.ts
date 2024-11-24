@@ -6,4 +6,7 @@ const router = express.Router();
 // Create an stationary shop order
 router.post('/', orderController.createOrderController); //Endpoint: /api/orders
 
+// get all the orders list from db
+router.get('/', orderController.fetchAllOrders); //Endpoint: /api/orders
+
 export const OrderProductRoutes = router;
