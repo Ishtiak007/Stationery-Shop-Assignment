@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { ProductControllers } from './product.controller';
 
 const router = express.Router();
@@ -16,6 +16,9 @@ router.get('/:productId', ProductControllers.getSingleProductFromDB); //Endpoint
 router.put('/:productId', ProductControllers.updateAnySingleProduct); //Endpoint: /api/products/:productId
 
 // delete a product from database
-router.delete('/:productId', ProductControllers.deleteAProductFromDB); //Endpoint: /api/products/:productId
+// router.delete('/:productId', ProductControllers.deleteAProductFromDB);
+router.delete('/:productId', (req: Request, res: Response) => {
+  ProductControllers.deleteAProductFromDB(req, res);
+}); //Endpoint: /api/products/:productId
 
 export const StationeryProductRoutes = router;
