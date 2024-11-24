@@ -42,7 +42,25 @@ const getAllTheOrders = async () => {
   return result;
 };
 
+//..........................................................................
+// Calculate Revenue from Orders
+const calculateRevenueBasisTotalPrice = async (): Promise<any> => {
+  const result = await OrderModel.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalRevenue: { $sum: '$totalPrice' },
+      },
+    },
+  ]);
+
+  const totalRevenue = Math.round(result[0]?.totalRevenue || 0);
+
+  return { totalRevenue };
+};
+
 export const orderService = {
   createAnOrder,
   getAllTheOrders,
+  calculateRevenueBasisTotalPrice,
 };
